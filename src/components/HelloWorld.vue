@@ -1,20 +1,18 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-  </div>
+  <button id="btn">Duplicator</button>
+  <button id="backgroundColor">Change Background Color</button>
+  <button id="changeHeading">Change Heading Text</button>
+  <button id="dltbtn">DeleteCard</button>
   <div class="card">
-    <img alt="real estate logo" src="./housepic.jpg">
+    <img alt="Picture of Card" src="https://images.unsplash.com/photo-1586957960772-3e526c5e7cbd?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTM0OTY0NDF8&ixlib=rb-4.0.3&q=85">
     <div class="card-content"> 
-      <h2>Two Pod Realty</h2> 
-      <p id="description">Real Estate Company Focused on delivering the best properties in the State College Area</p> 
+      <h2>Christian Wasta</h2> 
+      <p id="Description"> HAX is a paradigm shift for web publishing. It puts advanced authoring capabilities in the hands of everyone, regardless of technical ability and all items made are sustainability built in highly semantic HTML.</p> 
       <button class="details-button" id="detailsBtn">Details</button>
     </div> 
   </div> 
   
-  <button id="btn">Duplicator</button>
-  <button id="colorBtn">BGColorChanger</button>
-  <button id="Headingbtn">HeadingChanger</button>
-  <button id="dltbtn">DeleteCard</button>
+  
 </template>
 
 <script>
@@ -29,28 +27,21 @@ export default {
       document.body.appendChild(clone);
     });
     
-    var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-    var letters = ["A", "B", "C", "D", "E", "F"];
-    
-    function randomColor() {
-      var color = "";
-      for (var i = 0; i < 3; i++) {
-        var index = Math.floor(Math.random() * (numbers.length + letters.length));
-        color += (index < numbers.length) ? numbers[index] : letters[index - numbers.length];
+    document.querySelector('#backgroundColor').addEventListener('click', () => {
+      const elem = document.querySelector(".card");
+      const backgroundColor = elem.style.backgroundColor;
+
+      if (backgroundColor === 'beige') {
+        elem.style.backgroundColor = 'green';
+      } else {
+        elem.style.backgroundColor = 'beige';
       }
-      return color;
-    }
-    
-    document.querySelector('#colorBtn').addEventListener('click', () => {
-      const card = document.querySelector('.card');
-      // Change background color
-      card.style.backgroundColor = '#' + randomColor();
     });
     
     // HEADING CHANGER
-    document.querySelector('#Headingbtn').addEventListener('click', () => {
+    document.querySelector('#changeHeading').addEventListener('click', () => {
       const title = document.querySelector('h2');
-      title.innerText = "Super Pod 2 Realty";
+      title.innerText = "Christian Wasta Alt Title";
     });
     
     // Card delete
@@ -94,15 +85,15 @@ li {
 a {
   color: #42b983;
 }
-.card {
-  max-width: 400px;
+.card{
   margin: 0 auto;
-  border: 1px solid #0C0B0B;
-  background-color: #0C0B0B;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+  max-width: 300px;
+  max-height: 400px;
+  min-height: 10px;
+  padding: 8px 8px 37px 8px;
+  border-radius: 10px;
+  overflow: shown;
+  background-color: beige;
 }
 
 .card img {
@@ -119,7 +110,7 @@ h2 {
   font-size: 24px;
   margin: -10px 0;
   /* Background color and border */
-  background-color: #F8471B;
+  background-color: black;
   /* Background color */
   color: #fff;
   /* Text color on the background */
@@ -130,7 +121,7 @@ h2 {
 p {
   font-size: 16px;
   margin: 8px 0;
-  color: #fff;
+  color: black;
 }
 
 a.details-button {
